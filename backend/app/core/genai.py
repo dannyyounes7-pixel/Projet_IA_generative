@@ -92,7 +92,7 @@ Ceci ne remplace pas un avis medical.
                 "prompt": prompt,
                 "stream": False
             },
-            timeout=120
+            timeout=360
         )
         response.raise_for_status()
         data = response.json()
@@ -100,6 +100,6 @@ Ceci ne remplace pas un avis medical.
     except requests.exceptions.ConnectionError:
         return "⚠️ Le service IA local (Ollama) n'est pas disponible. Lancez 'ollama serve' puis réessayez."
     except requests.exceptions.Timeout:
-        return "⚠️ La génération IA a dépassé le délai imparti (120s). Réessayez."
+        return "⚠️ La génération IA a dépassé le délai imparti (360s). Réessayez."
     except Exception as e:
         return f"⚠️ Erreur lors de la génération IA : {str(e)}"
